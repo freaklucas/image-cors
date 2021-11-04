@@ -56,7 +56,7 @@ export default {
   },
   mounted() {
     axios
-      .get('http://bibekshakya.com/demo/vue/switchable-grid/api/products.json')
+      .get("http://localhost:8080/demo/vue/switchable-grid/api/products.json")
       .then(response => (this.contents = response))
   }
 }
