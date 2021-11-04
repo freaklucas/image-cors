@@ -3,11 +3,11 @@
     <div class="container">
       <div class="bar">
         <div class="btnHolder">
-          <button class="barActive">
+          <button @click="layout = 'grid'" :class="{ barActive:layout === 'grid' }">
             <i class="fa fa-th"></i>
             Grid
           </button>
-          <button>
+          <button @click="layout = 'list'" :class="{ barActive: layout === 'list' }">
             <i class="fas fa-list"> </i>
             List
           </button>
@@ -45,7 +45,7 @@ export default {
   name: "Product",
   data() {
     return {
-      layout: "list",
+      layout: "grid",
       contents: null,
     };
   },
