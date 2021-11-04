@@ -14,20 +14,16 @@
         </div>
       </div>
       <div class="content">
-        <ul class="grid">
+        <ul v-if="layout === 'grid'" class="grid">
           <li v-for="content in contents" :key="content.id">
             <div class="image">
-              <img
-                :src="content.imageSrc"
-              />
+              <img :src="content.imageSrc" />
             </div>
           </li>
         </ul>
-        <ul class="list" v-for="content in contents" :key="content.id">
-          <li>
-            <img
-              :src="content.imageSrc"
-            />
+        <ul v-if="layout === 'list'" class="list">
+          <li v-for="content in contents" :key="content.id">
+            <img :src="content.imageSrc" />
             <div class="listContent">
               <h2>{{ content.title }}</h2>
               <p>
@@ -43,21 +39,20 @@
 </template>
 
 <script>
-
-import axios from 'axios'
+import axios from "axios";
 
 export default {
-  name: 'Product',
+  name: "Product",
   data() {
     return {
+      layout: "list",
       contents: null,
-
-    }
+    };
   },
   mounted() {
     axios
       .get("http://localhost:8080/demo/vue/switchable-grid/api/products.json")
-      .then((response) => (this.contents = response.data))
-  }
-}
+      .then((response) => (this.contents = response.data));
+  },
+};
 </script>
